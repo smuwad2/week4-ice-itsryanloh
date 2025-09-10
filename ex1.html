@@ -21,13 +21,18 @@
                 var errorMessages="";
 
                 let elements = document.forms[formName].elements;
+                
+                if (elements['id'].value.length > 10) {
+                    errorMessages += ("ID must be less than 10 characters\n")
+                }
+                
                 if (elements['age'].value < 10 || elements['age'].value > 40) {
                     errorMessages += ("Age must be between 10 and 40.\n")
                 }
                 if (!elements['email'].value.includes('@')) {
                     errorMessages += ("Email must contain the character @.\n")
                 }
-                if (!elements['password'].value) {
+                if (!elements['password'].value.trim()) {
                     errorMessages += ("Password must be non-empty.")
                 }
                 if (errorMessages) {
